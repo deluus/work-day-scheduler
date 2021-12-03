@@ -1,7 +1,9 @@
 var currentTimeEl = $("#current-time");
-var timeBlockEl = $('#container') 
-var currentHrEl =
+var timeBlockEl = $('.container') ;
+var currentHrEl = "";
+var textEL =
 
+   
 
 
 
@@ -10,17 +12,12 @@ setInterval (function() {
 }, 1000);
 // console.log(currentTimeEl)
 
+
+
 // for loop to include all the hrs
 for (var i=9; i <= 17; i ++){
-    // console.log(i)
-}
+    console.log(i)
 
-function addElement (){
-    var node = document.createElement("<div>");
-    var textNode = document.createTextNode("container")
-    node.appendChild(textNode);
-    document.getElementById("container").appendChild(node);
-
-    console.log(addElement)
 }
+    var savedValueHr = localStorage.getItem("hour - " + i);
 
