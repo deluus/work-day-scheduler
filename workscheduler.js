@@ -16,8 +16,8 @@ setInterval (function() {
 
 // for loop to include all the hrs
 for (var i=9; i <= 17; i ++){
-    console.log(i)
+    // console.log(i)
 
 }
-    var savedValueHr = localStorage.getItem("hour - " + i);
+    var savedValueHr = localStorage.getItem("hour " + i);
 
