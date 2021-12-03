@@ -14,6 +14,14 @@ setInterval (function() {
 }, 1000);
     // console.log(currentTimeEl)
 
+
+
+    // for loop to include all the hrs
+    for (var i=9; i <= 17; i ++){
+        // console.log(i)
+    
+
+
     //  IF to detrmine if time is in the AM or PM 
 var meridiem = "";
 if (i <= 1159 ){
@@ -43,16 +51,16 @@ else {
       
 
 
-    // for loop to include all the hrs
-for (var i=9; i <= 17; i ++){
-    // console.log(i)
 
 
 
 
     var savedValueHr = localStorage.getItem("hour " + i);
      // console.log(savedValueHr)
-
+     if ( !savedValueHr) {
+         savedValueHr = "";
+     }
+    // console.log(savedValueHr = " no hours")
 
 }
 
