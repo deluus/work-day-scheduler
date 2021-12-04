@@ -1,7 +1,7 @@
 var currentTimeEl = $("#current-time");
 var container = $('.container') ;
 var timeBlock =$('.time-block');
-
+var saveBtn = $('.saveBtn');
 
 
 
@@ -14,6 +14,10 @@ setInterval (function() {
 }, 1000);
     // console.log(currentTimeEl)
 
+var div = document.createElement("div")
+var p = document.createElement("p")
+div.append('.container', p)
+console.log(div.childNodes)
 
 
     // for loop to include all the hrs
@@ -33,15 +37,16 @@ else {
     // console.log(meridiem)
 
     // IF to detrmine the color code for past, present, and future
-    var textarea = "";
+    var textarea =$("<textarea>")
+    // var textarea = "";
     if( i < currentTimeEl){
-        textarea = " background-color: white; color:black";
+        textarea.addClass = ("past");
     }
     else if ( i == currentTimeEl){
-        textarea = "background-color: green; color: black";
+        textarea.addClass = "present";
     }
     else if ( i > currentTimeEl){
-        textarea = "background-color: blue; color: black"
+        textarea.addClass = "future"
     }
     //  console.log(textarea)
 
