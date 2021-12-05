@@ -14,7 +14,7 @@ setInterval (function() {
     // for loop to include all the hrs
     
 for (var i=5; i <= 23; i ++){    
-    // creating the elements and inserting
+    // creating the elements and inserting its properties
     var timeBlock = $('<div>').attr('id', 'hour-'+i).attr('class', 'row time-block')
     var span = $('<span>')
     var timeHour = $('<div>').attr('class', 'col-md-1 hour').text(moment(i.toString(), 'k kk').format('h'))
@@ -26,13 +26,14 @@ for (var i=5; i <= 23; i ++){
     timeBlock.append(timeHour, textArea, saveBtn)
     container.append(timeBlock)
 
+    //  the meridiem of AM / PM
     if(i<12) {
         span.text(' AM')
     } else {
         span.text(' PM')
     }
 }
-
+//  creates the save botton click 
 $('.saveBtn').on('click', function() {
     var value = $(this).siblings('.description').val();
     var time = $(this).parent().attr('id');
@@ -40,13 +41,13 @@ $('.saveBtn').on('click', function() {
     localStorage.setItem(time, value);
     console.log(time, value)
 })
-
+//  
+//  assigns the correct color code for past, present, future time blocks
 function checkHour() {
     var currentHour = moment().hours();
 
     $('.time-block').each(function() {
         var hourBlock = parseInt($(this).attr('id').split('-')[1]);
-
         if(hourBlock < currentHour) {
             $(this).addClass('past')
             console.log('hello')
@@ -61,6 +62,7 @@ function checkHour() {
     })
 }
 checkHour();
+//  goes and gets the information saved in each time block
 $('#hour-5 .description').val(localStorage.getItem("hour-5"))
 $('#hour-6 .description').val(localStorage.getItem("hour-6"))
 $('#hour-7 .description').val(localStorage.getItem("hour-7"))
