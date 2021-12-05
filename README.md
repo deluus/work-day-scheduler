@@ -15,9 +15,9 @@
     ![](HW5.png)
 
 
-    LINKS  repo : https://github.com/deluus/work-scheduler
+    LINK  repo : https://github.com/deluus/work-scheduler
 
-     LINK   page :  https://deluus.github.io/work-scheduler/
+    LINK  page : https://deluus.github.io/work-scheduler/
   
 
 
