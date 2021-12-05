@@ -1,12 +1,7 @@
 var currentTimeEl = $("#current-time");
 var container = $('.container') ;
-var timeBlock =$('.time-block');
+//var timeBlock =$('.time-block');
 var saveBtn = $('.saveBtn');
-
-
-
-   
-
 
 
 setInterval (function() {
@@ -14,64 +9,58 @@ setInterval (function() {
 }, 1000);
     // console.log(currentTimeEl)
 
-var div = document.createElement("div")
-var p = document.createElement("p")
-div.append('.container', p)
-console.log(div.childNodes)
 
 
     // for loop to include all the hrs
-    for (var i=9; i <= 17; i ++){
-        // console.log(i)
-    
+for (var i=9; i <= 17; i ++){    
+    var timeBlock = $('<div>').attr('id', 'hour-'+i).attr('class', 'row time-block')
+    var span = $('<span>')
+    var timeHour = $('<div>').attr('class', 'col-md-1 hour').text(moment(i.toString(), 'k kk').format('h'))
+    var textArea = $('<textarea>').attr('class', 'col-md-10 description');
+    var saveBtn = $('<button>').attr('class', 'btn saveBtn col-md-1').text('Save');
 
+    //timeBlock
+    timeHour.append(span)
+    timeBlock.append(timeHour, textArea, saveBtn)
+    container.append(timeBlock)
 
-    //  IF to detrmine if time is in the AM or PM 
-var meridiem = "";
-if (i <= 1159 ){
-    meridiem = i + "AM";
-}
-else {
-    meridiem = i + "PM"
-};
-    // console.log(meridiem)
-
-    // IF to detrmine the color code for past, present, and future
-    var textarea =$("<textarea>")
-    // var textarea = "";
-    if( i < currentTimeEl){
-        textarea.addClass = ("past");
+    if(i<12) {
+        span.text(' AM')
+    } else {
+        span.text(' PM')
     }
-    else if ( i == currentTimeEl){
-        textarea.addClass = "present";
-    }
-    else if ( i > currentTimeEl){
-        textarea.addClass = "future"
-    }
-    //  console.log(textarea)
-
-    
-
-
-      
-
-
-
-
-
-
-    var savedValueHr = localStorage.getItem("hour " + i);
-     // console.log(savedValueHr)
-     if ( !savedValueHr) {
-         savedValueHr = "";
-     }
-    // console.log(savedValueHr = " no hours")
-
 }
 
+$('.saveBtn').on('click', function() {
+    var value = $(this).siblings('.description').val();
+    var time = $(this).parent().attr('id');
 
+    localStorage.setItem(time, value);
+    console.log(time, value)
+})
 
+function checkHour() {
+    var currentHour = moment().hours();
 
+    $('.time-block').each(function() {
+        var hourBlock = parseInt($(this).attr('id').split('-')[1]);
+
+        if(hourBlock < currentHour) {
+            $(this).addClass('past')
+            console.log('hello')
+        } else if(hourBlock === currentHour) {
+            $(this).removeClass('past');
+            $(this).addClass('present');
+        } else {
+            $(this).removeClass('past');
+            $(this).removeClass('present');
+            $(this).addClass('future');
+        }
+    })
+}
+checkHour();
+
+$('#hour-9 .description').val(localStorage.getItem("hour-9"))
 
 
 
